@@ -4,6 +4,8 @@ import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRight
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import { async } from '@firebase/util'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false)
@@ -35,7 +37,7 @@ const onSubmit = async (e) => {
     navigate('/')
   }
   }catch(error){
-    console.log(error);
+    toast.error('Invalid User Credential')
   }
 }
 

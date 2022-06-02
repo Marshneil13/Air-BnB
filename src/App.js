@@ -6,6 +6,7 @@ import Profile from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import {ToastContainer} from 'react-toastify'
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         </Routes>
         <Navbar/>
       </Router>
+
+      <ToastContainer/>
     </>
   );
 }

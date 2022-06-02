@@ -5,6 +5,7 @@ import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import {setDoc, doc, serverTimestamp} from 'firebase/firestore'
 import {db} from '../firebase.config'
+import {toast} from 'react-toastify'
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false)
@@ -42,7 +43,7 @@ await setDoc(doc(db, 'users', user.uid), formDataCopy)
 
     navigate('/')
   }catch(error){
-    console.log(error)
+    toast.error('Something went wrong with Registration')
   }
 }
 
