@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import OAuth from '../components/OAuth'
 import { async } from '@firebase/util'
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -81,7 +82,7 @@ const onSubmit = async (e) => {
              </div>
           </form>
           
-          {/* Google OAuth */}
+          <OAuth/>
 
           <Link to='/sign-up' className='registerLink'>
             Sign Up Instead
