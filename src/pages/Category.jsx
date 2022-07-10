@@ -11,6 +11,7 @@ startAfter} from 'firebase/firestore'
 import {db} from '../firebase.config'
 import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
+import ListingItem from '../components/ListingItem'
 
 function Category() {
     const [listings, setListings] = useState(null)
@@ -25,7 +26,8 @@ function Category() {
                 const listingsRef = collection(db, 'listings')
 
                 //Create a query
-                const q = query(listingsRef, 
+                const q = query(
+                    listingsRef, 
                     where('type', '==', params.categoryName),
                     orderBy('timestamp', 'desc'),
                     limit(10)
@@ -38,10 +40,11 @@ function Category() {
                 querySnap.forEach((doc) => {
                     return listings.push({
                         id: doc.id,
-                        data: doc.data
+                        data: doc.data(),
                     })
                 })
                 setListings(listings)
+               
                 setLoading(false)
             } catch (error) {
                 toast.error('Could not fetch listings')
@@ -66,7 +69,12 @@ function Category() {
         <main>
             <ul className="categoryListings">
                 {listings.map((listing) => (
-                    <h3 key={listing.id}>{listing.data.name}</h3>
+                    
+                    <ListingItem 
+                    listing={listing.data}
+                    id={listing.id}
+                    key={listing.id}
+                    />
                 ))
 
                 }
