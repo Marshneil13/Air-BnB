@@ -36,8 +36,10 @@ function Category() {
                 //Execute query
                 const querySnap = await getDocs(q)
                 const listings = []
+                    console.log("QUERY CATEGORY", querySnap)
 
                 querySnap.forEach((doc) => {
+                    console.log("DOC IN CATEGORY", doc);
                     return listings.push({
                         id: doc.id,
                         data: doc.data(),
